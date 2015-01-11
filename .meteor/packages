@@ -5,7 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 accounts-ui
 accounts-password
+email
+autopublish
+mizzao:bootstrap-3
