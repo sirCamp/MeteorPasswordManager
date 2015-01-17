@@ -10,4 +10,5 @@ accounts-ui
 accounts-password
 email
 autopublish
-mizzao:bootstrap-3
+d0minikk:materialize-meteor
+iron:router

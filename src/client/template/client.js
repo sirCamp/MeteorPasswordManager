@@ -3,12 +3,14 @@
     process.env.MAIL_URL = 'smtp://sircampydevelop@gmail.com:campydj90133@smtp.gmail.com:25';
 });*/
   // This code only runs on the client
-
-Template.body.helpers({
-    tasks: function () {
-      return Tasks.find({});
-    }
-  });
+/*
+Template.passwords.helpers({
+    accounts: [
+          { platform: "This is task 1" , user: "merda", password:"prova", descrizione :"fefeafae"},
+          { sites: "This is task 1" ,user: "merda", password:"prova", descrizione :"fefeafae"},
+          { sites: "This is task 1" ,user: "merda", password:"prova", descrizione :"fefeafae"}
+        ]
+  });*/
 
   /*Template.alert.helpers({
       alert: function() {
