@@ -29,6 +29,7 @@ Meteor.methods({
     Account.password = password;
     Account.description = description;
     Account.createDate = new Date();
+    Account.updateDate = new Date();
    
     var id = Accounts.insert(Account);
        

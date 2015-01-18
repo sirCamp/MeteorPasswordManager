@@ -6,11 +6,11 @@ dataReadyHold = null;
 if (Meteor.isClient) {
   Meteor.subscribe('accounts');
 }
-
+/*
 Router.configure({
   layoutTemplate: 'appBody',
   notFoundTemplate: 'notFound'
-});
+});*/
 
 //TODO
 if (Meteor.isClient) {
@@ -68,7 +68,7 @@ AdminController = RouteController.extend({
 });
 */
 Router.map(function() {
-  this.route('home', {path: '/'});
+  //this.route('home', {path: '/'});
   this.route('accounts',{path:'/accounts'})
   this.route('account', {path: '/accounts/:id'});
   /*this.route('feed');

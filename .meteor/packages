@@ -12,3 +12,7 @@ email
 autopublish
 d0minikk:materialize-meteor
 iron:router
+jparker:crypto-aes
+jparker:crypto-sha1
+jparker:crypto-sha256
+jparker:crypto-base64
