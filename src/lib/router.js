@@ -70,7 +70,8 @@ AdminController = RouteController.extend({
 Router.map(function() {
   //this.route('home', {path: '/'});
   this.route('accounts',{path:'/accounts'})
-  this.route('account', {path: '/accounts/:id'});
+  //this.route('recipe', {path: '/recipes/:name'});
+  this.route('account', {path: '/account/:_id'});
   /*this.route('feed');
   this.route('recipes');
   this.route('bookmarks');

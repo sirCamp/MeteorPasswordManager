@@ -1,15 +1,15 @@
 
 Meteor.methods({
-	encrypt: function(message){
+	encrypt: function(string){
 		
-		var encrypted = CryptoJS.AES.encrypt(message, "12%$(0)!&/(|");
+		var encrypted = CryptoJS.AES.encrypt(string, "12%$(0)!&/(|");
 		console.log(encrypted.toString());
-		return encrypted;
+		return encrypted.toString();
 	},
-	decrypt: function(message){
-		var decrypted = CryptoJS.AES.decrypt(message, "12%$(0)!&/(|");
+	decrypt: function(string){
+		var decrypted = CryptoJS.AES.decrypt(string, "12%$(0)!&/(|");
 		decrypted = decrypted.toString(CryptoJS.enc.Utf8);
 		console.log(decrypted);
-		return decrypted;
+		return decrypted.toString(CryptoJS.enc.Utf8);
 	}
 });
