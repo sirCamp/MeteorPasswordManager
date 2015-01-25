@@ -1,0 +1,16 @@
+<template name="master">
+    <div class="container">
+        
+        {{> yield "navmenu"}}
+
+        <section class="col s12 m6 l6">
+            {{> yield "main-content"}}
+        </section>
+
+        <section class="col s12 m6 l6">
+            {{> yield "second-content"}}
+        </section>
+
+        {{> yield "footer"}}
+    </div>
+</template>
