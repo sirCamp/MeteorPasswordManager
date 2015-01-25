@@ -7,11 +7,9 @@ if (Meteor.isClient) {
   Meteor.subscribe('accounts');
 }
 
-/*Router.configure({
-  layoutTemplate: 'ApplicationLayout',
-  notFoundTemplate: 'notFound'
-});*/
 Router.configure({
+  layoutTemplate: 'master',
+  notFoundTemplate: 'notFound',
   controller: 'ApplicationController'
 });
 //TODO
@@ -22,40 +20,50 @@ if (Meteor.isClient) {
 }
 
 ApplicationController = RouteController.extend({
-  layoutTemplate: 'ApplicationLayout'
+
+  onBeforeAction: function() {
+    var currentUser = Meteor.user();
+    if (null !== currentUser) {
+      this.next();
+    }
+    else{
+      Router.go('/login');
+      this.next();
+    }
+
+  }
+
 });
 AccountsController = ApplicationController.extend({
   
-  onBeforeAction: function() {
-      var currentUser = Meteor.user();
-      if (null !== currentUser) {
-        this.next();
-      }
-      else{
-        Router.go('/login');
-      }
-      
-    },
-
-  onAfterAction: function(){
-     console.log('cazzo');
+ // onAfterAction: function(){
+  //   console.log('cazzo');
    /* switch(this.route.getName()){
       case 'accounts.show':*/
-      console.log('cazzo');
-      Meteor.defer(function () {
+     // console.log('cazzo');
+     // Meteor.defer(function () {
           // find #my-magic-div in the DOM
           // do stuff to it
         
-      $('.modal-trigger').leanModal();
-       /* $('#modal1').openModal();*/});
+    //  $('.modal-trigger').leanModal();
+       /* $('#modal1').openModal();*///});
      /*break;*/
    // };
-  }
+  //}
 });
 
 UsersController = ApplicationController.extend({
 
 });
+
+LoginController = ApplicationController.extend({
+
+  yieldTemplates: {
+    'login-nav': {to: 'navmenu'},
+    'login-footer': {to: 'footer'}
+  }
+
+})
 /*
 HomeController = RouteController.extend({
   onBeforeAction: function() {
