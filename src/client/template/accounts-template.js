@@ -2,8 +2,8 @@
 Template.accounts.helpers({
 
 	path: function () {
-		console.log(Router.path('account', this),this._id);
-	  return Router.path('account', this);
+		console.log(Router.path('accounts.edit', this),this._id);
+	  return Router.path('accounts.edit', this);
 	},
 
 	accounts : function () {

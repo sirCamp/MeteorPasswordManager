@@ -18,3 +18,4 @@ jparker:crypto-sha256
 jparker:crypto-base64
 mrt:jqbootstrapvalidation
 aldeed:simple-schema
+mizzao:user-status
