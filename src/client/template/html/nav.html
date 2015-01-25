@@ -1,4 +1,6 @@
 <template name="nav">
+<header>
+<div class="navbar-fixed">
   <nav class="col s12">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
@@ -13,4 +15,12 @@
 
       </div>
   </nav>
+</div>
+</header>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+    });
+  </script>
 </template>

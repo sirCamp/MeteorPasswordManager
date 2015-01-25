@@ -60,7 +60,8 @@ LoginController = ApplicationController.extend({
 
   yieldTemplates: {
     'login-nav': {to: 'navmenu'},
-    'login-footer': {to: 'footer'}
+    'login-footer': {to: 'footer'},
+    //'login':{to:'maincontent'}
   }
 
 })
@@ -123,10 +124,15 @@ AccountController = RouteController.extend({
 });*/
 
 Router.map(function() {
-  //this.route('home', {path: '/'});
+  this.route('home', {path: '/'});
   /*TODO finish accounts route*/
   
-  this.route('login',{path:'/login'},{controller:'LoginController'});
+  this.route('login',
+    {path:'/login'},
+    {controller:'LoginController'},
+    function(){
+    this.render('login')}
+  );
   this.route('accounts',{path:'/accounts'},{name:'accounts'},{controller: 'AccountsController'});
   
   //SHOW
