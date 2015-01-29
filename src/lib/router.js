@@ -65,6 +65,17 @@ LoginController = ApplicationController.extend({
   }
 
 })
+
+RegisterController = ApplicationController.extend({
+
+  yieldTemplates: {
+    'login-nav': {to: 'navmenu'},
+    'login-footer': {to: 'footer'},
+    //'login':{to:'maincontent'}
+  }
+
+})
+
 /*
 HomeController = RouteController.extend({
   onBeforeAction: function() {
@@ -132,6 +143,13 @@ Router.map(function() {
     {controller:'LoginController'},
     function(){
     this.render('login')}
+  );
+
+  this.route('register',
+    {path:'/register'},
+    {controller:'RegisterController'},
+    function(){
+    this.render('register')}
   );
   this.route('credentials',{path:'/credentials'},{name:'credentials'},{controller: 'CredentialController'});
   
