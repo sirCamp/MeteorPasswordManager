@@ -4,7 +4,7 @@ dataReadyHold = null;
 
 // Global subscriptions
 if (Meteor.isClient) {
-  Meteor.subscribe('accounts');
+  Meteor.subscribe('credentials');
 }
 
 Router.configure({
@@ -21,25 +21,25 @@ if (Meteor.isClient) {
 
 ApplicationController = RouteController.extend({
 
-  onBeforeAction: function() {
-    var currentUser = Meteor.user();
+ onBeforeAction: function() {
+   /* var currentUser = Meteor.user();
     if (null !== currentUser) {
       this.next();
-    }
-    else{
-      Router.go('/login');
+    }*/
+   /* else{
+      Router.go('/login');*/
       this.next();
-    }
+  /*  }*/
 
   }
 
 });
-AccountsController = ApplicationController.extend({
+CredentialController = ApplicationController.extend({
   
  // onAfterAction: function(){
   //   console.log('cazzo');
    /* switch(this.route.getName()){
-      case 'accounts.show':*/
+      case 'credentials.show':*/
      // console.log('cazzo');
      // Meteor.defer(function () {
           // find #my-magic-div in the DOM
@@ -125,7 +125,7 @@ AccountController = RouteController.extend({
 
 Router.map(function() {
   this.route('home', {path: '/'});
-  /*TODO finish accounts route*/
+  /*TODO finish credentials route*/
   
   this.route('login',
     {path:'/login'},
@@ -133,33 +133,33 @@ Router.map(function() {
     function(){
     this.render('login')}
   );
-  this.route('accounts',{path:'/accounts'},{name:'accounts'},{controller: 'AccountsController'});
+  this.route('credentials',{path:'/credentials'},{name:'credentials'},{controller: 'CredentialController'});
   
   //SHOW
-  /*this.route('accounts.show', function(){
+  /*this.route('credentials.show', function(){
     this.render('Account', {
       data: function() {
-        return Accounts.find({_id:this.params.id});
+        return Credential.find({_id:this.params.id});
       }
       
     });
    
-    this.layout('accounts');
-    this.render('account', {
-        to: 'account'
+    this.layout('credentials');
+    this.render('credential', {
+        to: 'credential'
     });
 
   },
   {
-    path: '/accounts/:_id'
+    path: '/credentials/:_id'
   },
   {
-    name: 'account.show'
+    name: 'credential.show'
   },
  {onAfterAction: function(){
            console.log('cazzo');
          /* switch(this.route.getName()){
-            case 'accounts.show':*/
+            case 'credentials.show':*/
            // console.log('cazzo');
           //  Meteor.defer(function () {
                 // find #my-magic-div in the DOM
@@ -180,26 +180,26 @@ Router.map(function() {
 
 
 
-Router.route('/accounts/:_id/edit', {
+Router.route('/credentials/:_id/edit', {
   // The name of the route.
   // Used to reference the route in path helpers and to find a default template
   // for the route if none is provided in the "template" option. If no name is
   // provided, the router guesses a name based on the path '/post/:_id'
-  name: 'accounts.edit',
+  name: 'credentials.edit',
 
   // To support legacy versions of Iron.Router you can provide an explicit path
   // as an option, in case the first parameter is actually a route name.
   // However, it is recommended to provide the path as the first parameter of the
   // route function.
-  path: '/accounts/:_id/edit',
+  path: '/credentials/:_id/edit',
 
   // If we want to provide a specific RouteController instead of an anonymous
   // one we can do that here. See the Route Controller section for more info.
-  controller: 'AccountsController',
+  controller: 'CredentialController',
 
   // If the template name is different from the route name you can specify it
   // explicitly here.
-  template: 'accounts',
+  template: 'credentials',
 
   // A layout template to be used with this route.
   // If there is no layout provided, a default layout will
@@ -224,7 +224,7 @@ Router.route('/accounts/:_id/edit', {
   // example, the "dataNotFound" plugin calls this function to see if it
   // returns a null value, and if so, renders the not found template.
   data: function () {
-    return Accounts.findOne({_id: this.params._id});
+    return Credential.findOne({_id: this.params._id});
   },
 
   // You can provide any of the hook options described below in the "Using
@@ -276,33 +276,33 @@ Router.route('/accounts/:_id/edit', {
 
   //EDIT
   /*
-  this.route('accounts.edit', function(){
+  this.route('credentials.edit', function(){
     this.render('Account', {
       data: function() {
-        return Accounts.find({_id:this.params.id});
+        return Credential.find({_id:this.params.id});
       }
     });
   },
   {
-    path: '/accounts/:_id/edit'
+    path: '/credentials/:_id/edit'
   },
   {
-    name: 'account.edit'
+    name: 'credential.edit'
   });*/
 
   //DELETE
-  this.route('accounts.delete',function(){
+  this.route('credentials.delete',function(){
     this.render('Account', {
       data: function() {
-        return Accounts.find({_id:this.params.id});
+        return Credential.find({_id:this.params.id});
       }
     });
   },
   {
-    path: '/accounts/:_id/delete'
+    path: '/credentials/:_id/delete'
   },
   {
-    name: 'account.delete'
+    name: 'credential.delete'
   });
   /*this.route('feed');
   this.route('recipes');

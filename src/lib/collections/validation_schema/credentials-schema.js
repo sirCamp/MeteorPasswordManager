@@ -1,8 +1,8 @@
-Account = new SimpleSchema({
+Credential = new SimpleSchema({
 /*
 paltform: {
     type: String,
-    label: "Platform",
+    label: "Credential",
     max: 200
   },
 //sites: String,

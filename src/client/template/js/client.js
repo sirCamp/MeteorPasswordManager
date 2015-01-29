@@ -6,7 +6,7 @@
 /*
 Template.passwords.helpers({
     accounts: [
-          { platform: "This is task 1" , user: "merda", password:"prova", descrizione :"fefeafae"},
+          { credential: "This is task 1" , user: "merda", password:"prova", descrizione :"fefeafae"},
           { sites: "This is task 1" ,user: "merda", password:"prova", descrizione :"fefeafae"},
           { sites: "This is task 1" ,user: "merda", password:"prova", descrizione :"fefeafae"}
         ]
