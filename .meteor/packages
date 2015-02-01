@@ -17,6 +17,6 @@ jparker:crypto-sha1
 jparker:crypto-sha256
 jparker:crypto-base64
 mrt:jqbootstrapvalidation
-aldeed:simple-schema
 mizzao:user-status
 accounts-base
+aldeed:autoform

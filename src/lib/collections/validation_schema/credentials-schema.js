@@ -1,4 +1,4 @@
-Credential = new SimpleSchema({
+//Credential = new SimpleSchema({
 /*
 paltform: {
     type: String,
@@ -14,4 +14,4 @@ user: title: {
 /*passowrd: String,
 description : Match.OneOf(String, null)
 */
-});
+///});

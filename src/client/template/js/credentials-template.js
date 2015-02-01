@@ -10,9 +10,9 @@ Template.credentials.helpers({
 		console.log('merda');
       return Credentials.find({});
     },
-})
+});	
 
-Template.credential.events({
+Template.credentials.events({
 	'submit #newCredentialForm': function(e, t) {
 	    
 
