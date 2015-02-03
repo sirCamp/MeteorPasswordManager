@@ -7,10 +7,13 @@ Template.credentials.helpers({
 	},
 
 	credentials : function () {
-		console.log('merda');
       return Credentials.find({});
     },
 });	
+
+Template.credentials.rendered = function () {
+	$(this.find('.modal-trigger')).leanModal();
+};
 
 Template.credentials.events({
 	'submit #newCredentialForm': function(e, t) {

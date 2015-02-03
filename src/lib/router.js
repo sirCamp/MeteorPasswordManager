@@ -12,30 +12,34 @@ Router.configure({
   notFoundTemplate: 'notFound',
   controller: 'ApplicationController'
 });
-//TODO
-if (Meteor.isClient) {
-  // Keep showing the launch screen on mobile devices until we have loaded
-  // the app's data
-  //dataReadyHold = LaunchScreen.hold();
-}
+
 
 ApplicationController = RouteController.extend({
 
  onBeforeAction: function() {
-   /* var currentUser = Meteor.user();
+    var currentUser = Meteor.user();
     if (null !== currentUser) {
+      Router.go('/credentials');
       this.next();
-    }*/
-   /* else{
-      Router.go('/login');*/
+    }
+    else{
+      Router.go('/login');
       this.next();
-  /*  }*/
+    }
 
   }
 
 });
-CredentialController = ApplicationController.extend({
+
+CredentialsController = ApplicationController.extend({
   
+
+  yieldTemplates: {
+    'nav': {to: 'navmenu'},
+    'footer': {to: 'footer'},
+    //'login':{to:'maincontent'}
+  }
+
  // onAfterAction: function(){
   //   console.log('cazzo');
    /* switch(this.route.getName()){
@@ -151,7 +155,12 @@ Router.map(function() {
     function(){
     this.render('register')}
   );
-  this.route('credentials',{path:'/credentials'},{name:'credentials'},{controller: 'CredentialController'});
+  this.route('credentials',
+    {path:'/credentials'},
+    {name:'credentials'},
+    {controller: 'CredentialsController'},function(){
+      this.render('credentials')}
+  );
   
   //SHOW
   /*this.route('credentials.show', function(){
