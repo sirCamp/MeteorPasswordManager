@@ -18,6 +18,7 @@ ApplicationController = RouteController.extend({
 
  onBeforeAction: function() {
     var currentUser = Meteor.user();
+    console.log(currentUser);
     if (null !== currentUser) {
       Router.go('/credentials');
       this.next();
@@ -80,15 +81,12 @@ RegisterController = ApplicationController.extend({
 
 })
 
-/*
-HomeController = RouteController.extend({
-  onBeforeAction: function() {
-    Meteor.subscribe('latestActivity', function() {
-      dataReadyHold.release();
-    });
-  }
+
+HomeController = ApplicationController.extend({
+  
 });
 
+/*
 FeedController = RouteController.extend({
   onBeforeAction: function() {
     this.feedSubscription = feedSubscription;
@@ -139,7 +137,9 @@ AccountController = RouteController.extend({
 });*/
 
 Router.map(function() {
-  this.route('home', {path: '/'});
+  this.route('home', 
+    {path: '/'},
+    {controller: 'HomeController'});
   /*TODO finish credentials route*/
   
   this.route('login',
@@ -155,6 +155,7 @@ Router.map(function() {
     function(){
     this.render('register')}
   );
+
   this.route('credentials',
     {path:'/credentials'},
     {name:'credentials'},

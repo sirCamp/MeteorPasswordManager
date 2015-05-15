@@ -1,6 +1,6 @@
-Template.login-nav.rendered = function () {
+/*Template.loginnav.rendered = function () {
   $(".button-collapse").sideNav();
-};
+};*/
 Template.nav.rendered = function () {
   $(".button-collapse").sideNav();
 };
