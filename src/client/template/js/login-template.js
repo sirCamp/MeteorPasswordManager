@@ -55,12 +55,12 @@ Template.login.events({
 	 'submit #signUpForm': function(e, t) {
         e.preventDefault();
 
-        var signUpForm = $(e.currentTarget),
-            email = trimInput(signUpForm.find('#signUpEmail').val().toLowerCase()),
+        var signUpForm = $(e.currentTarget);
+            /*email = trimInput(signUpForm.find('#signUpEmail').val().toLowerCase()),
             password = signUpForm.find('#signUpPassword').val(),
-            passwordConfirm = signUpForm.find('#signUpPasswordConfirm').val();
-
-        if (isNotEmpty(email) && isNotEmpty(password) && isEmail(email) && areValidPasswords(password, passwordConfirm)) {
+            passwordConfirm = signUpForm.find('#signUpPasswordConfirm').val();*/
+ console.log(signUpForm);
+        /*if (isNotEmpty(email) && isNotEmpty(password) && isEmail(email) && areValidPasswords(password, passwordConfirm)) {
             Accounts.createUser({email: email, password: password}, function(err) {
                 if (err) {
                     if (err.message === 'Email already exists. [403]') {
@@ -73,7 +73,7 @@ Template.login.events({
                 }
             });
         }
-        return false;
+        return false;*/
     },
 
 	'button #delete' : function(e,t){
