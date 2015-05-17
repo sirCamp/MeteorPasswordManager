@@ -1,6 +1,14 @@
  <template name="login">
  <div class="row" style="margin-top: 100px;">
     <div class="col s12 m6 l6 ">
+    {{#if loginMessage}}
+      <div class="card-panel red darken-3">
+        <span class="white-text">
+          <a class="red darken-3" href="#" style="float:right;color:white"><i class="mdi-content-clear"></i></a>  
+          {{loginMessage}}
+        </span>
+      </div>
+    {{/if}}
      <form id="signUpForm">
        <div class="row">
          <div class="input-field col s12 m12 l12">
@@ -25,6 +33,7 @@
          </div>
        </div>
      </form>
+     {{loginMessage}}
      </div>
     <div class="col s12 m6 l6">
 

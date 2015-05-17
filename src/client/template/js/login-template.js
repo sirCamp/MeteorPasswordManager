@@ -40,6 +40,12 @@ Template.login.helpers({
 	    return true;
 	},
 
+	loginMessage: function() {
+
+		var alert = '<div class="card-panel teal"><span class="white-text">	Your credentials are incorrect. </span></div>';
+    	return Session.get("loginMessage");
+	},
+
 
 	/*path: function () {
 		console.log(Router.path('accounts.edit', this),this._id);
@@ -51,15 +57,26 @@ Template.login.helpers({
     },*/
 })
 
+
 Template.login.events({
 	 'submit #signUpForm': function(e, t) {
         e.preventDefault();
 
         var signUpForm = $(e.currentTarget);
-            /*email = trimInput(signUpForm.find('#signUpEmail').val().toLowerCase()),
-            password = signUpForm.find('#signUpPassword').val(),
-            passwordConfirm = signUpForm.find('#signUpPasswordConfirm').val();*/
- console.log(signUpForm);
+        var email = trimInput(signUpForm.find('#username').val().toLowerCase());
+        var password = signUpForm.find('#password').val();
+
+        if(isEmail(email) && isNotEmpty(email) && isNotEmpty(password)){
+        	//DEVO LOGGARMI
+        	Meteor.loginWithPassword(email, password);	
+        }
+        else{
+
+        	var alert = 'Your credentials are incorrect!';
+        	Session.set('loginMessage', alert);
+        }
+            
+ console.log(signUpForm.find('#username')+" "+signUpForm+" "+email+" "+password);
         /*if (isNotEmpty(email) && isNotEmpty(password) && isEmail(email) && areValidPasswords(password, passwordConfirm)) {
             Accounts.createUser({email: email, password: password}, function(err) {
                 if (err) {

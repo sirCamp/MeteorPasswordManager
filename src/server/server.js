@@ -1,5 +1,6 @@
  Meteor.startup(function () {
- 
+ /*
+
  var newUser = {
     email: "test@test.it", 
     password: "testtest", 
@@ -9,6 +10,6 @@
       birthday: '2015-02-28'
     }
   };
-  Accounts.createUser(newUser, function(err){});
+  Accounts.createUser(newUser);-*/
 
 }); 
