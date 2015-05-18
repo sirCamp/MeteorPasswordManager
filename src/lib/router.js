@@ -19,6 +19,7 @@ ApplicationController = RouteController.extend({
  onBeforeAction: function() {
     var currentUser = Meteor.user();
     console.log(currentUser);
+    window.c = Router;
     if (null !== currentUser) {
       Router.go('/credentials');
       this.next();
@@ -66,7 +67,14 @@ LoginController = ApplicationController.extend({
   yieldTemplates: {
     'login-nav': {to: 'navmenu'},
     'login-footer': {to: 'footer'},
-    //'login':{to:'maincontent'}
+  }
+
+});
+
+LogoutController = ApplicationController.extend({
+
+  action: function () {
+    Meteor.logout();   
   }
 
 })
@@ -76,7 +84,6 @@ RegisterController = ApplicationController.extend({
   yieldTemplates: {
     'login-nav': {to: 'navmenu'},
     'login-footer': {to: 'footer'},
-    //'login':{to:'maincontent'}
   }
 
 })
@@ -146,8 +153,13 @@ Router.map(function() {
     {path:'/login'},
     {controller:'LoginController'},
     function(){
-    this.render('login')}
+      this.render('login')
+    }
   );
+
+  this.route('logout',
+    {path:'/logout'},
+    {controller:'LogoutController'});
 
   this.route('register',
     {path:'/register'},
