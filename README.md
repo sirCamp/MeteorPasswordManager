@@ -8,3 +8,6 @@ All the account users, receive the updated credentials, in **realtime**.
 
 All system is based on *AES256 encryption algorithm* using **CryptoJS**
 Side CSS has been used a new framework called **MaterializaCSS**.
+
+## STATUS
+This project is in development status.
