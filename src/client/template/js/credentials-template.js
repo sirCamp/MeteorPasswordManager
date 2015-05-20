@@ -1,8 +1,7 @@
-//TODO user credential
+//TODO MOVE TO ROUTE
 Template.credentials.helpers({
 
 	path: function () {
-		console.log(Router.path('credential.edit', this),this._id);
 	  return Router.path('credential.edit', this);
 	},
 

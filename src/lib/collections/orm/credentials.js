@@ -60,8 +60,12 @@ Meteor.methods({
     Credential.description = description;
     Credential.createDate = new Date();
    
-    var id = Credentials.insert(Credential);
-       
+    Meteor.call('encrypt',password,function(err,result){
+      //DEBUG
+      //console.log(result);
+      Credential.password = result;
+    });
+    var id = Credentials.update(Credential);
     return id;
   }
 });

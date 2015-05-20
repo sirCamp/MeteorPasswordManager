@@ -21,7 +21,7 @@ ApplicationController = RouteController.extend({
     console.log(currentUser);
     window.c = Router;
     if (null !== currentUser) {
-      Router.go('/credentials');
+      //Router.go('/credentials');
       this.next();
     }
     else{
@@ -168,12 +168,12 @@ Router.map(function() {
     this.render('register')}
   );
 
-  this.route('credentials',
+  /*this.route('credentials',
     {path:'/credentials'},
     {name:'credentials'},
     {controller: 'CredentialsController'},function(){
       this.render('credentials')}
-  );
+  );*/
   
   //SHOW
   /*this.route('credentials.show', function(){
@@ -211,27 +211,82 @@ Router.map(function() {
          // };
         //}});
 
+Router.route('/credentials', {
+
+  name: 'credentials.index',
+  path: '/credentials',
+  controller: 'CredentialsController',
+  template: 'credentials',
+  onAfterAction: function () {
+    console.debug("eseguito");
+  },
+  action: function () {
+    // render all templates and regions for this route
+    this.render();
+   
+  }
+
+});
 
 
 
+Router.route('/credentials/create', {
 
+  name: 'credentials.create',
+  path: '/credentials/create',
+  controller: 'CredentialsController',
+  template: 'credentials_create',
+  onAfterAction: function () {
+    console.debug("eseguito");
+  },
+  action: function () {
+    // render all templates and regions for this route
+    this.render();
+   
+  }
 
-
-
+});
 
 
 Router.route('/credentials/:_id/edit', {
+
+  name: 'credentials.edit',
+  path: '/credentials/:_id/edit',
+  controller: 'CredentialsController',
+  template: 'credentials_edit',
+  
+  waitOn: function() {
+    return Meteor.subscribe('credentials');
+  },
+  
+  data: function () {
+    return Credentials.findOne({_id: this.params._id});
+  },
+  onAfterAction: function () {
+    this.render();
+  },
+
+  /*action: function () {
+
+    this.render();
+   
+  }*/
+
+});
+
+
+Router.route('/credentials/:_id/edit1', {
   // The name of the route.
   // Used to reference the route in path helpers and to find a default template
   // for the route if none is provided in the "template" option. If no name is
   // provided, the router guesses a name based on the path '/post/:_id'
-  name: 'credentials.edit',
+  name: 'credentials.edit1',
 
   // To support legacy versions of Iron.Router you can provide an explicit path
   // as an option, in case the first parameter is actually a route name.
   // However, it is recommended to provide the path as the first parameter of the
   // route function.
-  path: '/credentials/:_id/edit',
+  path: '/credentials/:_id/edit1',
 
   // If we want to provide a specific RouteController instead of an anonymous
   // one we can do that here. See the Route Controller section for more info.
@@ -239,7 +294,7 @@ Router.route('/credentials/:_id/edit', {
 
   // If the template name is different from the route name you can specify it
   // explicitly here.
-  template: 'credentials',
+  template: 'credentials1',
 
   // A layout template to be used with this route.
   // If there is no layout provided, a default layout will
