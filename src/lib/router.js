@@ -18,10 +18,17 @@ ApplicationController = RouteController.extend({
 
  onBeforeAction: function() {
     var currentUser = Meteor.user();
-    console.log(currentUser);
+    //console.log(currentUser);
     window.c = Router;
+    
     if (null !== currentUser) {
-      //Router.go('/credentials');
+      if(Router.current().route.path() == "/"){
+        Router.go('/credentials');
+      }
+      else{
+        Router.go(Router.current().route.path());
+      }
+      
       this.next();
     }
     else{
@@ -89,8 +96,11 @@ RegisterController = ApplicationController.extend({
 })
 
 
-HomeController = ApplicationController.extend({
-  
+DashboardController = ApplicationController.extend({
+      action: function () {
+      // render all templates and regions for this route
+      Router.go('/credentials');
+    }
 });
 
 /*
@@ -144,10 +154,14 @@ AccountController = RouteController.extend({
 });*/
 
 Router.map(function() {
-  this.route('home', 
-    {path: '/'},
-    {controller: 'HomeController'});
-  /*TODO finish credentials route*/
+  
+
+  this.route('/',{
+    name: 'dashboard',
+    path: '/',
+    controller: 'DashboardController',
+
+  });
   
   this.route('login',
     {path:'/login'},
@@ -252,6 +266,32 @@ Router.route('/credentials/:_id/edit', {
 
   name: 'credentials.edit',
   path: '/credentials/:_id/edit',
+  controller: 'CredentialsController',
+  template: 'credentials_edit',
+  
+  waitOn: function() {
+    return Meteor.subscribe('credentials');
+  },
+  
+  data: function () {
+    return Credentials.findOne({_id: this.params._id});
+  },
+  onAfterAction: function () {
+    this.render();
+  },
+
+  /*action: function () {
+
+    this.render();
+   
+  }*/
+
+});
+
+this.route('/credentials/:_id/delete', {
+
+  name: 'credentials.delete',
+  path: '/credentials/:_id/delete',
   controller: 'CredentialsController',
   template: 'credentials_edit',
   
@@ -386,19 +426,7 @@ Router.route('/credentials/:_id/edit1', {
   });*/
 
   //DELETE
-  this.route('credentials.delete',function(){
-    this.render('Account', {
-      data: function() {
-        return Credential.find({_id:this.params.id});
-      }
-    });
-  },
-  {
-    path: '/credentials/:_id/delete'
-  },
-  {
-    name: 'credential.delete'
-  });
+
   /*this.route('feed');
   this.route('recipes');
   this.route('bookmarks');

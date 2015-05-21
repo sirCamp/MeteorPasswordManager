@@ -59,7 +59,7 @@ Template.login.helpers({
 
 
 Template.login.events({
-	 'submit #signUpForm': function(e, t) {
+	'submit #signUpForm': function(e, t) {
         e.preventDefault();
 
         var signUpForm = $(e.currentTarget);
@@ -68,33 +68,31 @@ Template.login.events({
 
         if(isEmail(email) && isNotEmpty(email) && isNotEmpty(password)){
         	//DEVO LOGGARMI
-        	Meteor.loginWithPassword(email, password);	
+
+        	Meteor.loginWithPassword(email, password,function(error){
+
+	        	if(error == null){
+
+	        		var user = Meteor.user();
+	        		console.debug("LOGGED AS: "+user.emails[0].address);
+	        		Router.go('/credentials');
+	        	}
+	        	else{
+	        		
+	        		console.debug("NOT LOGGED, LOGIN IS WRONG");
+	        		Session.set('loginMessage', null);
+	        		var alert = 'Your credentials are not valid. Have you forget the password?';
+	        		Session.set('loginMessage', null);
+	        	}
+        	});
+        	
+        		
         }
         else{
-
+        	console.debug("NOT LOGGED, PARAMETERS TO LOGIN FORM IS INVALID");
         	var alert = 'Your credentials are incorrect!';
         	Session.set('loginMessage', alert);
         }
-            
- console.log(signUpForm.find('#username')+" "+signUpForm+" "+email+" "+password);
-        /*if (isNotEmpty(email) && isNotEmpty(password) && isEmail(email) && areValidPasswords(password, passwordConfirm)) {
-            Accounts.createUser({email: email, password: password}, function(err) {
-                if (err) {
-                    if (err.message === 'Email already exists. [403]') {
-                        Session.set('alert', 'We\'re sorry but this email is already used.');
-                    } else {
-                        Session.set('alert', 'We\'re sorry but something went wrong.');
-                    }
-                } else {
-                    Session.set('alert', 'Congrats! You\'re now a new Meteorite!');
-                }
-            });
-        }
-        return false;*/
-    },
-
-	'button #delete' : function(e,t){
-		e.preventDefault();
-		console.log(this);
-	}
+        	
+    }
 });
