@@ -22,14 +22,14 @@ ApplicationController = RouteController.extend({
     window.c = Router;
     
     if (null !== currentUser) {
-      if(Router.current().route.path() == "/"){
+      if(Router.current().route.path() == "/" || Router.current().route.path() == "/login"){
         Router.go('/credentials');
+        this.next();
       }
       else{
         Router.go(Router.current().route.path());
+        this.next();
       }
-      
-      this.next();
     }
     else{
       Router.go('/login');
