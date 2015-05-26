@@ -49,20 +49,6 @@ CredentialsController = ApplicationController.extend({
     //'login':{to:'maincontent'}
   }
 
- // onAfterAction: function(){
-  //   console.log('cazzo');
-   /* switch(this.route.getName()){
-      case 'credentials.show':*/
-     // console.log('cazzo');
-     // Meteor.defer(function () {
-          // find #my-magic-div in the DOM
-          // do stuff to it
-        
-    //  $('.modal-trigger').leanModal();
-       /* $('#modal1').openModal();*///});
-     /*break;*/
-   // };
-  //}
 });
 
 UsersController = ApplicationController.extend({
