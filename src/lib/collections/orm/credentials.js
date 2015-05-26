@@ -54,7 +54,7 @@ Meteor.methods({
     );*/
     
     Credential  = Credentials.findOne({_id: id});
-    // console.debug(Credential);
+    //  console.debug(Credential);
     //Credential.userId = Meteor.userId();
     Credential1 = {};
     Credential1.credential = credential;
