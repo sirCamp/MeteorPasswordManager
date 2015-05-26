@@ -20,6 +20,7 @@ Template.credentials_edit.events({
 	    e.preventDefault();
 
 	    var editCredentialForm = $(e.currentTarget),
+	    	id = editCredentialForm.find('#_id').val();
 	        credential = editCredentialForm.find('#credential').val();
 	        sites = editCredentialForm.find('#sites').val();
 	        user = editCredentialForm.find('#user').val();
@@ -29,7 +30,10 @@ Template.credentials_edit.events({
 	        console.log(credential,sites,user);
 	        //CHIAMO L'UPDATE
 	        //TODO Validation
-	        Meteor.call('updateCredential',credential,sites,user,password,description);
+	        Meteor.call('updateCredential',credential,sites,user,password,description,id,function(err, data) {
+  				console.log(data)
+  				console.log(err);
+			});
 	},
 
 	'button #delete' : function(e,t){

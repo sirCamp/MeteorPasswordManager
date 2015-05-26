@@ -1,18 +1,7 @@
-//TODO MOVE TO ROUTE
-Template.credentials.helpers({
-
-	path: function () {
-	  return Router.path('credential.edit', this);
-	},
-	credentials : function () {
-      return Credentials.find({});
-    },
 
 
-});	
-
-Template.credentials.events({
-	/*'submit #newCredentialForm': function(e, t) {
+Template.credentials_create.events({
+	'submit #newCredentialForm': function(e, t) {
 	    e.preventDefault();
 
 	    var newCredentialForm = $(e.currentTarget),
@@ -23,9 +12,14 @@ Template.credentials.events({
 	        re_password = newCredentialForm.find('#re-password').val();
 	        description = newCredentialForm.find('#description').val();
 	        console.log(credential,sites,user);
+	        //CHIAMO L'UPDATE
 	        //TODO Validation
-	        Meteor.call('createCredential',credential,sites,user,password,description);
-	},*/
+	        
+	        Meteor.call('createCredential',credential,sites,user,password,description,function(err, data) {
+  				console.log(data)
+  				console.log(err);
+			});
+	},
 
 	'button #delete' : function(e,t){
 		e.preventDefault();

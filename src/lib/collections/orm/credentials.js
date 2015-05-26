@@ -23,6 +23,7 @@ Meteor.methods({
     });*/
       
     //Credential.userId = Meteor.userId();
+
     Credential = {};
     Credential.credential = credential;
     Credential.sites = sites;
@@ -41,7 +42,7 @@ Meteor.methods({
     return id;
   },
 
-  updateCredential: function(credential,sites,user,password,description) {
+  updateCredential: function(credential,sites,user,password,description,id) {
     check(Meteor.userId(), String);
     //FIXME
    /* check(
@@ -51,21 +52,28 @@ Meteor.methods({
       passowrd: String,
       description : Match.OneOf(String, null)
     );*/
-      
-    Credential.userId = Meteor.userId();
-    Credential.credential = credential;
-    Credential.sites = sites;
-    Credential.user = user;
-    Credential.password = password;
-    Credential.description = description;
-    Credential.createDate = new Date();
+    
+    Credential  = Credentials.findOne({_id: id});
+    //console.debug(Credential);
+    //Credential.userId = Meteor.userId();
+    Credential1 = {};
+    Credential1.credential = credential;
+    Credential1.sites = sites;
+    Credential1.user = user;
+    Credential1.password = password;
+    Credential1.description = description;
+    Credential1.updateDate = new Date();
    
     Meteor.call('encrypt',password,function(err,result){
       //DEBUG
       //console.log(result);
-      Credential.password = result;
+      Credential1.password = result;
     });
-    var id = Credentials.update(Credential);
+
+
+  //  (this._id, {$inc: {score: 2}});
+    
+    var id = Credentials.update(Credential._id,Credential1);
     return id;
   }
 });
