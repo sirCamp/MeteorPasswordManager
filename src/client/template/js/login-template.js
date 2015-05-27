@@ -82,7 +82,7 @@ Template.login.events({
 	        		console.debug("NOT LOGGED, LOGIN IS WRONG");
 	        		Session.set('loginMessage', null);
 	        		var alert = 'Your credentials are not valid. Have you forget the password?';
-	        		Session.set('loginMessage', null);
+	        		Session.set('loginMessage', alert);
 	        	}
         	});
         	

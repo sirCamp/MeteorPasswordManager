@@ -12,6 +12,7 @@ Credentials.latest = function() {
 
 Meteor.methods({
   createCredential: function(credential,sites,user,password,description) {
+    console.log('[CREATE CREDENTIAL]');
     //check(Meteor.userId(), String);
     //FIXME
     /*check({
@@ -43,6 +44,7 @@ Meteor.methods({
   },
 
   updateCredential: function(credential,sites,user,password,description,id) {
+    console.log('[UPDATE CREDENTIAL]: '+id);
     check(Meteor.userId(), String);
     //FIXME
    /* check(
@@ -74,6 +76,12 @@ Meteor.methods({
   //  (this._id, {$inc: {score: 2}});
     
     var id = Credentials.update(Credential._id,Credential1);
+    return id;
+  },
+  
+  deleteCredential: function(id) {
+    console.log('[DELETE CREDENTIAL]: '+id);
+    var id = Credentials.remove(id);
     return id;
   }
 });

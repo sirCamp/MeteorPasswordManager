@@ -279,7 +279,7 @@ this.route('/credentials/:_id/delete', {
   name: 'credentials.delete',
   path: '/credentials/:_id/delete',
   controller: 'CredentialsController',
-  template: 'credentials_edit',
+  template: '', //no template for that route
   
   waitOn: function() {
     return Meteor.subscribe('credentials');
@@ -289,14 +289,15 @@ this.route('/credentials/:_id/delete', {
     return Credentials.findOne({_id: this.params._id});
   },
   onAfterAction: function () {
-    this.render();
+    //this.render();
+    console.log('After');
   },
 
-  /*action: function () {
-
-    this.render();
+  onRun: function () {
+    //Meteor.call('deleteCredentials',this.params._id);
+    console.log("Elimino l'oggetto:" + this.params._id);
    
-  }*/
+  }
 
 });
 

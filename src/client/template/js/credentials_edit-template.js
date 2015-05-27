@@ -35,9 +35,4 @@ Template.credentials_edit.events({
   				console.log(err);
 			});
 	},
-
-	'button #delete' : function(e,t){
-		e.preventDefault();
-		console.log(this);
-	}
 });

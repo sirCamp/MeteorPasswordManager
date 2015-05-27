@@ -12,7 +12,7 @@ Template.credentials.helpers({
 });	
 
 Template.credentials.events({
-	/*'submit #newCredentialForm': function(e, t) {
+	'submit #newCredentialForm': function(e, t) {
 	    e.preventDefault();
 
 	    var newCredentialForm = $(e.currentTarget),
@@ -25,9 +25,9 @@ Template.credentials.events({
 	        console.log(credential,sites,user);
 	        //TODO Validation
 	        Meteor.call('createCredential',credential,sites,user,password,description);
-	},*/
+	},
 
-	'button #delete' : function(e,t){
+	'click #delete' : function(e,t){
 		e.preventDefault();
 		console.log(this);
 	}
