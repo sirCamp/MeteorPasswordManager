@@ -1,3 +1,7 @@
+/*Template.credentials.rendered = function () {
+	$(this.find('.modal-trigger')).leanModal();
+};*/
+
 //TODO MOVE TO ROUTE
 Template.credentials.helpers({
 
@@ -27,8 +31,9 @@ Template.credentials.events({
 	        Meteor.call('createCredential',credential,sites,user,password,description);
 	},
 
-	'click #delete' : function(e,t){
+	/*'click #delete' : function(e,t){
 		e.preventDefault();
-		console.log(this);
-	}
+		$('#modal1').openModal();
+		
+	}*/
 });

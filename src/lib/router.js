@@ -219,6 +219,9 @@ Router.route('/credentials', {
   template: 'credentials',
   onAfterAction: function () {
     console.debug("eseguito");
+    Meteor.defer(function () {
+      $('.modal-trigger').leanModal();
+    });
   },
   action: function () {
     // render all templates and regions for this route
@@ -291,10 +294,13 @@ this.route('/credentials/:_id/delete', {
   onAfterAction: function () {
     //this.render();
     console.log('After');
+    Router.go('/credentials');
   },
 
   onRun: function () {
     //Meteor.call('deleteCredentials',this.params._id);
+    Session.set('deleteMessage', "Deleted");
+    Session.set('success', 'success');
     console.log("Elimino l'oggetto:" + this.params._id);
    
   }
